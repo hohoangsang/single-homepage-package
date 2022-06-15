@@ -1,55 +1,118 @@
-import React from "react";
 import {
-	Nav,
-	Navbar,
-	NavDropdown,
-	Form,
-	FormControl,
-	Button,
-	Container,
-} from "react-bootstrap";
+  AppBar,
+  Toolbar,
+  Typography,
+  styled,
+  Box,
+  InputBase,
+  Badge,
+  Avatar,
+  Menu,
+  MenuItem,
+} from "@mui/material";
+import React, { useState } from "react";
+import { LocalLibrary, Mail, Notifications } from "@mui/icons-material";
 
-const Header = () => {
-	return (
-		<Container>
-			<Navbar bg="light" expand="lg">
-				<Navbar.Brand href="#home">
-					ReactNavbarComponent
-				</Navbar.Brand>
-				<Navbar.Toggle aria-controls="basic-navbar-nav" />
-				<Navbar.Collapse id="basic-navbar-nav">
-					<Nav className="ml-auto">
-						<Nav.Link href="#home">Home</Nav.Link>
-						<Nav.Link href="#link">Link</Nav.Link>
-						<NavDropdown title="Dropdown"
-								id="basic-nav-dropdown">
-							<NavDropdown.Item href="#action/3.1">
-								Action
-							</NavDropdown.Item>
-							<NavDropdown.Item href="#action/3.2">
-								Another action
-							</NavDropdown.Item>
-							<NavDropdown.Item href="#action/3.3">
-								Something
-							</NavDropdown.Item>
-							<NavDropdown.Divider />
-							<NavDropdown.Item href="#action/3.4">
-								Separated link
-							</NavDropdown.Item>
-						</NavDropdown>
-					</Nav>
-					<Form inline>
-						<FormControl type="text"
-							placeholder="Search"
-							className="mr-sm-2" />
-						<Button variant="outline-success">
-							Search
-						</Button>
-					</Form>
-				</Navbar.Collapse>
-			</Navbar>
-		</Container>
-	);
-};
+const StyledToolbar = styled(Toolbar)({
+  display: "flex",
+  justifyContent: "space-between",
+});
+
+const SearchBox = styled("div")(({ theme }) => ({
+  backgroundColor: "white",
+  padding: "5px 10px",
+  width: "50%",
+  borderRadius: theme.shape.borderRadius,
+}));
+
+const IconsBox = styled(Box)(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  gap: "20px",
+  [theme.breakpoints.down("sm")]: {
+    display: "none",
+  },
+}));
+
+const UserBox = styled(Box)(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  gap: "10px",
+  [theme.breakpoints.up("sm")]: {
+    display: "none",
+  },
+}));
+
+function Header() {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  return (
+    <AppBar position="sticky">
+      <StyledToolbar>
+        <Typography variant="h6" sx={{ display: { xs: "none", sm: "block" } }}>
+          DevVerse
+        </Typography>
+        <LocalLibrary sx={{ display: { xs: "block", sm: "none" } }} />
+
+        <SearchBox>
+          <InputBase placeholder="search..." />
+        </SearchBox>
+
+        <IconsBox>
+          <Badge
+            badgeContent={4}
+            color="error"
+            sx={{ "&:hover": { cursor: "pointer" } }}
+          >
+            <Mail />
+          </Badge>
+          <Badge
+            badgeContent={6}
+            color="error"
+            sx={{ "&:hover": { cursor: "pointer" } }}
+          >
+            <Notifications />
+          </Badge>
+          <Avatar
+            src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?cs=srgb&dl=pexels-justin-shaifer-1222271.jpg&fm=jpg"
+            sx={{ width: 30, height: 30, "&:hover": { cursor: "pointer" } }}
+            onClick={handleClick}
+          />
+        </IconsBox>
+
+        <UserBox>
+          <Typography variant="p">Sang</Typography>
+          <Avatar
+            src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?cs=srgb&dl=pexels-justin-shaifer-1222271.jpg&fm=jpg"
+            sx={{ width: 30, height: 30, "&:hover": { cursor: "pointer" } }}
+            onClick={handleClick}
+          />
+        </UserBox>
+      </StyledToolbar>
+
+      <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+          "aria-labelledby": "basic-button",
+        }}
+      >
+        <MenuItem>Profile</MenuItem>
+        <MenuItem>Logout</MenuItem>
+      </Menu>
+    </AppBar>
+  );
+}
 
 export default Header;

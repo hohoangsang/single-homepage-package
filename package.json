@@ -1,9 +1,18 @@
 {
   "name": "react-single-homepage",
-  "version": "0.1.2",
-  "keywords": ["react", "hompage", "simple"],
+  "version": "0.1.8",
+  "main": "dist/index.js",
+  "keywords": [
+    "react",
+    "hompage",
+    "simple"
+  ],
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "@mui/icons-material": "^5.8.4",
+    "@mui/material": "^5.8.4",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
@@ -11,12 +20,10 @@
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
-
   "peerDependencies": {
     "react": "^18.2.0",
     "react-bootstrap": "^2.4.0"
   },
-
   "scripts": {
     "start": "react-scripts start",
     "build": "del -rf dist && NODE_ENV=production babel src/lib --out-dir dist --copy-files",

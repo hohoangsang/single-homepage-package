@@ -1,10 +1,20 @@
-import { Header } from "./lib";
+import { RightBar, Header, Main, SideBar } from "./lib";
+import { Stack } from "@mui/material";
 
 function App() {
   return (
-    <div >
+    <div>
       <Header />
-      Single Homepage
+      <Stack
+        direction={"row"}
+        spacing={2}
+        justifyContent={"space-between"}
+        sx={{ margin: "0 16px" }}
+      >
+        <SideBar />
+        <Main />
+        <RightBar />
+      </Stack>
     </div>
   );
 }
