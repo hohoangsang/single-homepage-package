@@ -1,6 +1,6 @@
 {
   "name": "react-single-homepage",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "keywords": ["react", "hompage", "simple"],
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
@@ -9,10 +9,14 @@
     "@testing-library/user-event": "^13.5.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4",
+    "web-vitals": "^2.1.4"
+  },
+
+  "peerDependencies": {
     "react": "^18.2.0",
     "react-bootstrap": "^2.4.0"
   },
+
   "scripts": {
     "start": "react-scripts start",
     "build": "del -rf dist && NODE_ENV=production babel src/lib --out-dir dist --copy-files",

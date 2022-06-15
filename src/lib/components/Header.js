@@ -6,11 +6,12 @@ import {
 	Form,
 	FormControl,
 	Button,
+	Container,
 } from "react-bootstrap";
 
 const Header = () => {
 	return (
-		<>
+		<Container>
 			<Navbar bg="light" expand="lg">
 				<Navbar.Brand href="#home">
 					ReactNavbarComponent
@@ -47,7 +48,7 @@ const Header = () => {
 					</Form>
 				</Navbar.Collapse>
 			</Navbar>
-		</>
+		</Container>
 	);
 };
 
