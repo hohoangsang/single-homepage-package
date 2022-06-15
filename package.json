@@ -1,6 +1,6 @@
 {
   "name": "react-single-homepage",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "keywords": ["react", "hompage", "simple"],
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
